@@ -1,0 +1,17 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: DownloadSecureFile@1
+    name: baixarEnv
+    inputs:
+      secureFile: '.env'
+
+  - script: |
+      mkdir env
+      cp $(baixarEnv.secureFilePath) env/.env
+      cat env/.env
+    displayName: "Preparar arquivos de ambiente"
