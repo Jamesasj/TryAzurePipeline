@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  azagent:
+    build: .
+    container_name: azdevops-agent
+    env_file:
+      - .env
+    restart: always
